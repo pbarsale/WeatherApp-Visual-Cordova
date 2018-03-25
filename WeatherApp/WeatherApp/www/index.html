@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WeatherApp</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="./css/login.css">
+    <script src="scripts/login.js"></script>
+    <script src="scripts/index.js"></script>
+    <link rel="icon" href="./images/favi.jpeg">
+</head>
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+            <strong>Weather</strong>App
+        </a>
+        <span id="date" class="lead" style="color:white"> </span>
+    </nav>
+
+    <div class="imgcontainer">
+        <img src="./images/login1.png" alt="USER" class="lgimg">
+    </div>
+   
+    <div class="container">
+        <form onsubmit="checkCredentails(document.getElementById('uid').value,document.getElementById('pwd').value)">
+            <label id="error"></label>
+            <br />
+            <input class="form-control" type="text" placeholder="Enter User Id" name="uname" id="uid" required />
+            <input type="password" class="form-control" placeholder="Enter Password" name="psw" id="pwd" required />
+            <button id="btnlg" class="btn btn-success" type="submit">Login</button>            
+        </form>
+        <!--
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+           -->
+    </div>
+    <!--
+
+         <div class="container" style="background-color:#f1f1f1">
+          <button type="button" class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    -->
+
+
+</body>
+</html>

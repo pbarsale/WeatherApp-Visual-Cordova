@@ -1,0 +1,173 @@
+﻿body {
+
+    background-image: url("../images/login.jpg");
+    min-height: 100vh;
+    background-size: cover;
+    /*background-position: center; */
+    background-repeat: no-repeat;
+    /* margin: 0 auto;*/
+}
+
+
+
+#table {
+    background-color: white;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #table td, #table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #table tr:hover {
+        background-color: #ddd;
+    }
+
+    #table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+
+
+/* The Modal (background) */
+.modal {
+    display: block; /* Shown by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 100%; /* Could be more or less, depending on screen size */
+}
+
+.modal-header {
+    background-color: #b3e0ff;
+    color: black;
+}
+.modal-body {
+    background-color: #ccebff;
+    color: black;
+    font-size: large;
+}
+
+.modal-footer {
+    background-color: #b3e0ff;
+    color: black;
+}
+
+#moreData 
+{
+width:70%; 
+}
+
+/* The Close Button */
+.close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+    /* Close button on hover */
+    .close:hover,
+    .close:focus {
+        color: red;
+        cursor: pointer;
+    }
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+
+.scrollingTable {
+    width: 80%;
+    overflow-y: auto;
+    margin-left: 15%;
+}
+
+#controls {
+    margin-top: 3%;
+    margin-left: 15%;
+    width: 50%;
+    align-items :center;
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* navbar */
+.navbar {
+    background-color: rgb(69, 106, 171);
+    color: white;
+}
+
+.navbar a {
+       
+        font-size: 25px;
+}
+
+a {
+    cursor: pointer;
+}
+
+#menudiv {
+    width: 30%;
+}
+
+#logout {
+    margin-left: 3%;
+}

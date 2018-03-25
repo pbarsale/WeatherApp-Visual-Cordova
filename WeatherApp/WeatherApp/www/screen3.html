@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>WeatherApp</title>
+    <link rel="icon" href="./images/favi.jpeg">
+</head>
+<body onload="makeTableScroll()">
+
+    <!-- navbar -->
+    <nav class="navbar">
+        <a class="navbar-brand">
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+            <strong>Weather</strong>App
+        </a>
+        <div id="menudiv">
+            <button id="proceed" class="btn btn-warning" onclick="window.location.replace('screen2.html')">  Back </button>
+            <button id="logout" class="btn btn-warning" onclick="window.location.replace('index.html')"> Logout </button>
+        </div>
+    </nav>
+
+    <div id="weathertable">
+
+        <div id="controls" class="input-group">
+            <input v-model="inzip" class="form-control" type="text"  maxlength="5" placeholder="Zipcode" onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+            <input style="margin-left:2%" v-model="incity" class="form-control" type="text" placeholder="City/State Name" />
+        </div>
+
+        <br />
+        <br />
+
+        <!-- Modal -->
+        <div v-if="showmodal" style="display:block" class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLongTitle"> {{ modalData.city }} - {{ modalData.zipcode }} , {{ modalData.time }}  </h4>
+                        <button type="button" v-on:click="showmodal = !showmodal" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table id="moreData">
+                            <tr>
+                                <th>Description </th>
+                                <td>{{ modalData.des }}</td>
+                            </tr>
+                            <tr>
+                                <th>Temperature (In F) </th>
+                                <td>{{ modalData.tempf }}</td>
+                            </tr>
+                            <tr>
+                                <th> Temperature (In C) </th>
+                                <td>{{ modalData.tempc }}</td>
+                            </tr>
+                            <tr>
+                                <th>Humidity  </th>
+                                <td>{{  modalData.humidity }}</td>
+                            </tr>
+                            <tr>
+                                <th>Wind Speed </th>
+                                <td>{{ modalData.windspeed }}</td>
+                            </tr>
+                            <tr>
+                                <th>Visibility  </th>
+                                <td>{{ modalData.visibility  }}</td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" v-on:click="showmodal = !showmodal" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scrollingTable">
+
+            <table id="table">
+                
+                <tr>
+                    <th>Zipcode</th>
+                    <th>CityName</th>
+                    <th>Description</th>
+                    <th>Temperature (In F)</th>
+                    <th>Temperature (In C)</th>
+                    <th> Observation Time </th>
+                  
+
+                </tr>
+                <tr v-for="item in filteredItems">
+                    <td> <a v-on:click="manageModal(item)"> {{ item.zipcode }} </a> </td>
+                    <td> <a v-on:click="manageModal(item)"> {{ item.city }} </a> </td>
+                    <td> <a v-on:click="manageModal(item)"> {{ item.des }} </a> </td>
+                    <td> <a v-on:click="manageModal(item)"> {{ item.tempf }} </a> </td>
+                    <td> <a v-on:click="manageModal(item)"> {{ item.tempc }} </a> </td>
+                    <td> <a v-on:click="manageModal(item)"> {{ item.time }} </a> </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="scripts/screen3.js"></script>
+    <link href="css/screen3.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</body>
+</html>

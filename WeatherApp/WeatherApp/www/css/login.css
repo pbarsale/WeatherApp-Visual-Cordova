@@ -1,0 +1,85 @@
+/* Bordered form */
+
+
+body {
+    font-family: Calibri;
+    background-image: url("../images/login.jpg");
+    min-height: 100vh;
+    background-size: cover;
+    /*background-position: center; */
+    background-repeat: no-repeat;
+    /* margin: 0 auto;*/
+}
+
+/* Center the login image inside this container */
+.imgcontainer {
+  
+    text-align: center;
+    padding-right: 20%;
+    margin-top: 5%;
+    margin-left:8%;
+    margin-bottom:3%;
+}
+
+/* Login image */
+img.lgimg {
+    width: 30%;
+    border-radius: 50%;
+    height: 30%;
+    border-color:white;
+    border-bottom-style:solid;
+}
+
+.container {
+    height:100%;
+    width:100%;
+    padding: 16px;
+}
+
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    font-size: large;
+    width: 50%;
+    align-content: center;
+    align-self: center;
+    padding: 12px 20px;
+    margin-left: 15%;
+    margin-bottom:2%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    
+}
+
+/* Set a style for all buttons */
+#btnlg {
+
+    width: 20%;
+    margin-left: 30%;
+    margin-top :1%;
+    color: white;
+    cursor: pointer;
+    font-size: x-large;
+}
+
+
+/* navbar */
+.navbar {
+    background-color: rgb(69, 106, 171);
+}
+
+.navbar a {
+        color: white;
+        font-size: 25px;
+}
+
+#error {
+font:xx-large; 
+color:red;
+margin-left:15%;
+}
+
+
+
+
+

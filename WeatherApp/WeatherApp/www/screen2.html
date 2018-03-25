@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>WeatherApp</title>
+    <link rel="icon" href="./images/favi.jpeg">   
+</head>
+
+<body>
+    <div id="SelectTable">
+
+        <!-- navbar -->
+        <nav class="navbar">
+            <a class="navbar-brand" href="#">
+                <i class="fa fa-sun-o" aria-hidden="true"></i>
+                <strong>Weather</strong>App
+            </a>
+            <div id="menudiv">
+                <button id="proceed" class="btn btn-warning" onclick="window.location.replace('screen3.html')">  Proceed </button>
+                <button id="logout" class="btn btn-warning" onclick="window.location.replace('index.html')"> Logout </button>
+            </div>
+        </nav>
+        
+
+        <!-- This is for current location-->
+        <div v-show="type == 'current'" class="hero">
+
+
+            <!-- weather section  -->
+            <div class="container">
+                <br />
+
+                <div class="input-group">
+                    <button type="button" class="btn btn-success" style="margin-left:70%;margin-top:3%" v-on:click="changeOption()"> Switch Location Type </button>
+                </div>
+
+                <div class="row">
+
+                    <div id="" class="col-8 mx-auto weather">
+                        <!-- weather header section -->
+                        <div class="weather-head">
+                            <h1 id="location" class="text-center display-4"> {{ city }}</h1>
+                            <div class="row">
+                                <div id="description" class="description col-6 text-center">
+                                    <p class="desc" v-html="description"></p>
+                                </div>
+                                <div id="temperature" class="col-6 text-center">
+                                    <p v-html="temperature"></p>
+                                </div>
+                            </div>
+                            <!-- weather body header -->
+                            <div class="weather-body">
+                                <div class="row">
+                                    <div class="humidity col-4 text-center">
+                                        <i class="wi wi-raindrop"></i><span> Humidity</span>
+                                    </div>
+                                    <div class="wind col-4 text-center">
+                                        <i class="wi wi-strong-wind"></i><span> Wind Speed</span>
+                                    </div>
+                                    <div class="visibility col-4 text-center">
+                                        <i class="fa fa-eye"></i><span> Visibility</span>
+                                    </div>
+                                </div>
+                                <!-- weather body data -->
+                                <div class="row">
+                                    <div id="humidity" class="humidity-data col-4 text-center">
+                                        {{ humidity }}
+                                    </div>
+                                    <div id="wind" class="wind-data col-4 text-center">
+                                        {{ windspeed }}
+                                    </div>
+                                    <div id="visibility" class="degree-data col-4 text-center">
+                                        {{ visibility }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- This is for specified location-->
+
+        <div  v-show="enterzip == true"  class="hero">
+
+            <br />
+            <!-- weather section  -->
+            <div class="container">
+                <br /> 
+                <button type="button" class="btn btn-success" style="float:right" v-on:click="changeOption()"> Switch Location Type </button>
+
+                <div class="input-group" style="width:50%">
+                    <input type="text" class="form-control" style="width:20%" maxlength="5" placeholder="Zipcode" v-model="zcode" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                    <button type="button" class="btn btn-warning" v-on:click="getweather()"> Show weather details </button>
+                </div>
+
+                <div class="row" v-show="type == 'specified'" >
+                    <div id="" class="col-8 mx-auto weather">
+                        <!-- weather header section -->
+                        <div class="weather-head">
+                            <h1 id="location" class="text-center display-4"> {{ city }}</h1>
+                            <div class="row">
+                                <div id="description" class="description col-6 text-center">
+                                    <p class="desc" v-html="description"></p>
+                                </div>
+                                <div id="temperature" class="col-6 text-center">
+                                    <p v-html="temperature"></p>
+                                </div>
+                            </div>
+                            <!-- weather body header -->
+                            <div class="weather-body">
+                                <div class="row">
+                                    <div class="humidity col-4 text-center">
+                                        <i class="wi wi-raindrop"></i><span> Humidity</span>
+                                    </div>
+                                    <div class="wind col-4 text-center">
+                                        <i class="wi wi-strong-wind"></i><span> Wind Speed</span>
+                                    </div>
+                                    <div class="visibility col-4 text-center">
+                                        <i class="fa fa-eye"></i><span> Visibility</span>
+                                    </div>
+                                </div>
+                                <!-- weather body data -->
+                                <div class="row">
+                                    <div id="humidity" class="humidity-data col-4 text-center">
+                                        {{ humidity }}
+                                    </div>
+                                    <div id="wind" class="wind-data col-4 text-center">
+                                        {{ windspeed }}
+                                    </div>
+                                    <div id="visibility" class="degree-data col-4 text-center">
+                                        {{ visibility }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal" v-if="showmodal" style="display:block" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLongTitle">Please select one</h4>
+                        <button type="button" v-on:click="hideModal()" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label class="radio-inline">
+                            <input type="radio" name="loc" v-model="type1" id="current" value="current" checked="checked"> <b class="basics"> Current Location </b>
+                        </label>
+                        <label class="radio-inline">
+                            
+                            <input type="radio" name="loc" v-model="type1" id="specified" value="specified">  <b class="basics"> Another Location </b>
+                        </label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" v-on:click="hideModal()" data-dismiss="modal">Close</button>
+                        <button type="button" id="btnforecast" class="btn btn-primary" v-on:click="getweather()">Show weather forecast</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="scripts/vue.js"></script>
+
+    <link href="css/screen2.css" rel="stylesheet" />
+    <script src="scripts/screen2.js"></script>
+   
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</body>
+</html>
