@@ -5,8 +5,8 @@
         incity: '',
        
         showmodal: false,
-        items: [       
-        ],
+        items: [                   
+         ],
 
         modalData: {
             zipcode: '', city: '', des: '',
@@ -30,11 +30,13 @@
             app.modalData.time = item.time;
         }
     },
+
     computed: {
 
         filteredItems: function () {            
             var self = this;
-           
+
+            
             return self.items.filter(function (item) {
 
                 if (item.show == true)
@@ -55,6 +57,7 @@
                         return true;
                 }             
             })
+            app.makeTableScroll();
         }       
     },          
 
@@ -86,20 +89,3 @@
         xobj.send(null);  
     }
 });
-
-function makeTableScroll() {
-
-   
-    var maxRows = 10;
-
-    var table = document.getElementById('table');
-    var wrapper = table.parentNode;
-    var rowsInTable = table.rows.length;
-    var height = 0;
-    if (rowsInTable > maxRows) {
-        for (var i = 0; i < maxRows; i++) {
-            height += table.rows[i].clientHeight;
-        }
-        wrapper.style.height = height + "px";
-    }
-}

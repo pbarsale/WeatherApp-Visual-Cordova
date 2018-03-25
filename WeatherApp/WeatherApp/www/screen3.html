@@ -4,7 +4,7 @@
     <title>WeatherApp</title>
     <link rel="icon" href="./images/favi.jpeg">
 </head>
-<body onload="makeTableScroll()">
+<body>
 
     <!-- navbar -->
     <nav class="navbar">
@@ -45,24 +45,24 @@
                                 <td>{{ modalData.des }}</td>
                             </tr>
                             <tr>
-                                <th>Temperature (In F) </th>
+                                <th>Temperature (°F) </th>
                                 <td>{{ modalData.tempf }}</td>
                             </tr>
                             <tr>
-                                <th> Temperature (In C) </th>
+                                <th> Temperature (°C) </th>
                                 <td>{{ modalData.tempc }}</td>
                             </tr>
                             <tr>
-                                <th>Humidity  </th>
+                                <th>Humidity </th>
                                 <td>{{  modalData.humidity }}</td>
                             </tr>
                             <tr>
                                 <th>Wind Speed </th>
-                                <td>{{ modalData.windspeed }}</td>
+                                <td>{{ modalData.windspeed }} mph</td>
                             </tr>
                             <tr>
                                 <th>Visibility  </th>
-                                <td>{{ modalData.visibility  }}</td>
+                                <td>{{ modalData.visibility  }} miles</td>
                             </tr>
                         </table>
                         
@@ -75,29 +75,31 @@
             </div>
         </div>
 
-        <div class="scrollingTable">
+        <div  class="scrollingTable">
 
             <table id="table">
-                
-                <tr>
-                    <th>Zipcode</th>
-                    <th>CityName</th>
-                    <th>Description</th>
-                    <th>Temperature (In F)</th>
-                    <th>Temperature (In C)</th>
-                    <th> Observation Time </th>
-                  
-
-                </tr>
-                <tr v-for="item in filteredItems">
-                    <td> <a v-on:click="manageModal(item)"> {{ item.zipcode }} </a> </td>
-                    <td> <a v-on:click="manageModal(item)"> {{ item.city }} </a> </td>
-                    <td> <a v-on:click="manageModal(item)"> {{ item.des }} </a> </td>
-                    <td> <a v-on:click="manageModal(item)"> {{ item.tempf }} </a> </td>
-                    <td> <a v-on:click="manageModal(item)"> {{ item.tempc }} </a> </td>
-                    <td> <a v-on:click="manageModal(item)"> {{ item.time }} </a> </td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Zipcode</th>
+                        <th>CityName</th>
+                        <th>Description</th>
+                        <th>Temperature (°F)</th>
+                        <th>Temperature (°C)</th>
+                        <th> Observation Time </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in filteredItems">
+                        <td> <a v-on:click="manageModal(item)"> {{ item.zipcode }} </a> </td>
+                        <td> <a v-on:click="manageModal(item)"> {{ item.city }} </a> </td>
+                        <td> <a v-on:click="manageModal(item)"> {{ item.des }} </a> </td>
+                        <td> <a v-on:click="manageModal(item)"> {{ item.tempf }} </a> </td>
+                        <td> <a v-on:click="manageModal(item)"> {{ item.tempc }} </a> </td>
+                        <td> <a v-on:click="manageModal(item)"> {{ item.time }} </a> </td>
+                    </tr>
+                </tbody>                
             </table>
+
         </div>
     </div>
 

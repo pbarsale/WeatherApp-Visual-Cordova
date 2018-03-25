@@ -2,12 +2,12 @@
 
 function checkCredentails(username, password, callback) {   
 
-    username = username.toLowerCase();
-    username = username.trim();
-    password = password.trim();
+        username = username.toLowerCase();
+        username = username.trim();
+        password = password.trim();
 
-    console.log(username);
-    console.log(password);
+        console.log(username);
+        console.log(password);
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
         xobj.open('GET', '../../User.json', true); // Replace 'my_data' with the path to your file

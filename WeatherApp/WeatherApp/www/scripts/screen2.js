@@ -1,6 +1,7 @@
 ﻿var app = new Vue({
     el: '#SelectTable',
     data: {
+        
         initial: true,
         showmodal: true,
         zcode: '',
@@ -114,7 +115,8 @@
                     app.type = app.type1;
                     app.city = `${city}, ${country}`;
                 }                                   
-                }
+            }
+            
             }
                 httpReqWeather.send();
         },
