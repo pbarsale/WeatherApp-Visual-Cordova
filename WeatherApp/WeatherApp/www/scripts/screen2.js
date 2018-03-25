@@ -13,11 +13,18 @@
         temperature: '',
         humidity: '',
         windspeed: '',
-        visibility: ''
+        visibility: '',
+       
     },
 
     methods: {
+
+        // Get Weather Data
         getweather: function () {
+            
+            if (app.type1 == '')
+                app.type1 = 'current';
+
             app.type = '';
             app.enterzip = false;
 
@@ -31,6 +38,7 @@
             app.fetchweather();            
         },
 
+        
         fetchweather: function () {
 
             console.log("Inside Fetch");
@@ -55,7 +63,8 @@
             httpReqIpAsync: function (url, appid, callback) {
             var httpReqIp = new XMLHttpRequest();
             httpReqIp.open("GET", url, true)
-                httpReqIp.onreadystatechange = function () {
+            httpReqIp.onreadystatechange = function () {
+               
             if (httpReqIp.readyState == 4 && httpReqIp.status == 200) {
                 var jsonIp = JSON.parse(httpReqIp.responseText)
                 var ip = jsonIp.ip;
@@ -69,6 +78,7 @@
                 //calling openweathermap api function
                 app.httpReqWeatherAsync(weatherApi);
             }
+            
         }
                 httpReqIp.send();
         },
@@ -78,8 +88,10 @@
 
         var httpReqWeather = new XMLHttpRequest();
         httpReqWeather.open("GET", url, true);
+        
         httpReqWeather.onreadystatechange = function () {
             if (httpReqWeather.readyState == 4 && httpReqWeather.status == 200) {
+                app.errormsg = '';
                 var jsonWeather = JSON.parse(httpReqWeather.responseText);
                 console.log(jsonWeather)
                
@@ -116,9 +128,15 @@
                     app.city = `${city}, ${country}`;
                 }                                   
             }
+            else {
+                if (httpReqWeather.status != 200)
+                    app.errormsg = 'No data found';
+            }
             
             }
-                httpReqWeather.send();
+            httpReqWeather.send();
+       
+
         },
 
         changeOption: function ()

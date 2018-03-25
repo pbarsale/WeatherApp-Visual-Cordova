@@ -1,5 +1,5 @@
 ﻿//import data from '../../User.json';
-
+// Check the credentails
 function checkCredentails(username, password, callback) {   
 
         username = username.toLowerCase();

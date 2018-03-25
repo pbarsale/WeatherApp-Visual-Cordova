@@ -17,7 +17,7 @@ body {
     text-align: center;
     padding-right: 20%;
     margin-top: 5%;
-    margin-left:8%;
+    margin-left:20%;
     margin-bottom:3%;
 }
 
@@ -44,7 +44,7 @@ input[type=text], input[type=password] {
     align-content: center;
     align-self: center;
     padding: 12px 20px;
-    margin-left: 15%;
+    margin-left: 25%;
     margin-bottom:2%;
     display: inline-block;
     border: 1px solid #ccc;
@@ -55,8 +55,8 @@ input[type=text], input[type=password] {
 #btnlg {
 
     width: 20%;
-    margin-left: 30%;
-    margin-top :1%;
+    margin-left: 40%;
+    margin-top :2%;
     color: white;
     cursor: pointer;
     font-size: x-large;

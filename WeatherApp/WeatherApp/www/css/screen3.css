@@ -31,16 +31,13 @@
     }
 
     #table thead th {
-       
         text-align: left;
-        background-color: #4CAF50;
-        color: white;
        
+        background-color: #fff0b3;
+        color:black;
+        
     }
 
-    #table thead {
-      
-    }
 
 
 /* The Modal (background) */
@@ -136,7 +133,7 @@ width:70%;
     height: 750px;
     overflow-y: auto;
     overflow-x: auto;
-    margin-left: 15%;
+    margin-left: 10%;
 }
 
 #controls {
@@ -176,4 +173,11 @@ a {
 
 #logout {
     margin-left: 3%;
+}
+
+#totalrows
+{
+    margin-left:10%;
+    color:white;
+    font-size:large;
 }

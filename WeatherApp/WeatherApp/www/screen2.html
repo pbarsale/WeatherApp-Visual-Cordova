@@ -19,7 +19,7 @@
                 <button id="logout" class="btn btn-warning" onclick="window.location.replace('index.html')"> Logout </button>
             </div>
         </nav>
-        
+
 
         <!-- This is for current location-->
         <div v-show="type == 'current'" class="hero">
@@ -82,20 +82,21 @@
 
         <!-- This is for specified location-->
 
-        <div  v-show="enterzip == true"  class="hero">
+        <div v-show="enterzip == true" class="hero">
 
             <br />
             <!-- weather section  -->
             <div class="container">
-                <br /> 
+                <br />
                 <button type="button" class="btn btn-default" style="float:right; background-color: #fff0b3" v-on:click="changeOption()"> Switch Location Type </button>
+                
+                    <div class="input-group" style="width:50%">
+                        <input type="text" class="form-control" style="width:20%" maxlength="5" placeholder="Enter Zipcode" v-model="zcode" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required />
+                        <button type="button" class="btn btn-warning" v-on:click="getweather()"> Show weather details </button>
+                    </div>
+                
 
-                <div class="input-group" style="width:50%">
-                    <input type="text" class="form-control" style="width:20%" maxlength="5" placeholder="Enter Zipcode" v-model="zcode" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
-                    <button type="button" class="btn btn-warning"  v-on:click="getweather()"> Show weather details </button>
-                </div>
-
-                <div class="row" v-show="type == 'specified'" >
+                <div class="row" v-show="type == 'specified'">
                     <div id="" class="col-8 mx-auto weather">
                         <!-- weather header section -->
                         <div class="weather-head">
@@ -105,8 +106,8 @@
                                     <p class="desc" v-html="description"></p>
                                 </div>
                                 <div id="temperature" class="col-6 text-center">
-                                    <p v-html="temperature"> </p>                                   
-                                </div>                                
+                                    <p v-html="temperature"> </p>
+                                </div>
                             </div>
                             <!-- weather body header -->
                             <div class="weather-body">
@@ -151,15 +152,15 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <label class="radio-inline">
-                            <input type="radio" name="loc" v-model="type1" id="current" value="current" checked="checked"> <b class="basics"> Current Location </b>
-                        </label>
-                        <label class="radio-inline">
-                            
-                            <input type="radio" name="loc" v-model="type1" id="specified" value="specified">  <b class="basics"> Another Location </b>
-                        </label>
+                    <div class="modal-body">                        
+                            <label class="radio-inline">
+                                <input type="radio" name="loc" v-model="type1" id="current" value="current" checked="checked"> <b class="basics"> Current Location </b>
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="loc" v-model="type1" id="specified" value="specified">  <b class="basics"> Another Location </b>
+                            </label>                        
                     </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" v-on:click="hideModal()" data-dismiss="modal">Close</button>
                         <button type="button" id="btnforecast" class="btn btn-primary" v-on:click="getweather()">Show weather forecast</button>

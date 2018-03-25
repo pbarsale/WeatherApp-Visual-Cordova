@@ -1,6 +1,7 @@
 ﻿var app = new Vue({
     el: '#weathertable',
     data: {
+        rowcount: 0,
         inzip: '',
         incity: '',
        
@@ -33,9 +34,9 @@
 
     computed: {
 
+        // To filter by zipcode and city/state
         filteredItems: function () {            
             var self = this;
-
             
             return self.items.filter(function (item) {
 
@@ -57,21 +58,22 @@
                         return true;
                 }             
             })
-            app.makeTableScroll();
+            
         }       
     },          
 
+    // Load the Data into the HTML table bind to the items Vue data element
     beforeCreate: function ()
     {       
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/csv");
-        xobj.open('GET', '../../finaldata.csv', true); // Replace 'my_data' with the path to your file
+        xobj.open('GET', '../../finaldata.csv', true);
 
         xobj.onreadystatechange = function () {
             if (xobj.readyState == 4 && xobj.status == "200") {
 
-               var data = xobj.responseText.split("\n");
-
+                var data = xobj.responseText.split("\n");
+                app.rowcount = data.length - 2;
                               
                 for (i = 1; i < data.length - 2; i++)
                 {
