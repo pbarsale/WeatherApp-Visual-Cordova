@@ -1,7 +1,7 @@
 ﻿var app = new Vue({
     el: '#weathertable',
     data: {
-        rowcount: 0,
+        
         inzip: '',
         incity: '',
        
@@ -73,8 +73,7 @@
             if (xobj.readyState == 4 && xobj.status == "200") {
 
                 var data = xobj.responseText.split("\n");
-                app.rowcount = data.length - 2;
-                              
+                                              
                 for (i = 1; i < data.length - 2; i++)
                 {
                     var row = data[i].split(",");  
